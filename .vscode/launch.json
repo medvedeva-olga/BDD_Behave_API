@@ -1,0 +1,78 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "behave: все сценарии",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "behave",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": { "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8" }
+    },
+    {
+      "name": "behave: текущий .feature",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "behave",
+      "args": ["${relativeFile}"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": { "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8" }
+    },
+    {
+      "name": "behave: сценарий по имени",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "behave",
+      "args": ["--name", "${input:scenarioName}"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": { "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8" }
+    },
+    {
+      "name": "behave: только @smoke",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "behave",
+      "args": ["--tags=@smoke"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": { "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8" }
+    },
+    {
+      "name": "behave: только @negative",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "behave",
+      "args": ["--tags=@negative"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": { "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8" }
+    },
+    {
+      "name": "mock: запустить локально",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/tools/mock_tasks_api.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": { "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8" }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "scenarioName",
+      "type": "promptString",
+      "description": "Часть названия сценария (например: Создание)",
+      "default": "Создание"
+    }
+  ]
+}

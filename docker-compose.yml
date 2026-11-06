@@ -1,0 +1,16 @@
+services:
+  mock-tasks:
+    build:
+      context: ./tools
+      dockerfile: Dockerfile
+    image: tasks-mock:local
+    container_name: tasks-mock
+    ports:
+      # Снаружи порт можно поменять: MOCK_PORT=8091 docker compose up -d
+      - "${MOCK_PORT:-8090}:8090"
+    environment:
+      API_HOST: 0.0.0.0
+      API_PORT: "8090"
+      # 1 — требовать Bearer-токен для /api/* (см. tools/mock_tasks_api.py)
+      MOCK_REQUIRE_AUTH: "${MOCK_REQUIRE_AUTH:-0}"
+    restart: unless-stopped
